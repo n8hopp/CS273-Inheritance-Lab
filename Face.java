@@ -601,4 +601,19 @@ public class Face {
     protected int distY(double yv) {
         return (int)Math.round(yv*height/100.0);
     }
+
+    // NATE ADDED FUNCTION:
+    protected Polygon2 fitCentered(Polygon2 shape, int centerX, int centerY, int width, int height)
+    {
+        int leftX = (int)(centerX - 0.5*width);
+        int topY = (int)(centerY - 0.5*height);
+        return shape.fitIn(leftX, topY, width, height);
+    }
+
+    protected void fillOvalCentered(Graphics g, int centerX, int centerY, int width, int height)
+    {
+        int leftX = (int)(centerX - 0.5*width);
+        int topY = (int)(centerY - 0.5*height);
+        g.fillOval(leftX, topY, width, height);
+    }
 }
